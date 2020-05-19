@@ -1,7 +1,7 @@
 /** All time variables in milliseconds **/
 
 /** Switch between dev mode and production **/
-const isDevMode = true;
+const isDevMode = false;
 
 const MAX_PLAYERS_PER_LOBBY = 4;
 
