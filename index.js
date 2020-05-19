@@ -19,8 +19,6 @@ app.use(express.urlencoded({limit: '50mb'}));
 
 /** For Heroku Deployment - change to false when working on local **/
 if(!isDevMode) {
-  app.use(express.static('public'));
-
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/index.html'));
   })
