@@ -24,7 +24,7 @@ if(!isDevMode) {
   })
 } else {
   app.get('*', (req, res) => {
-    console.log('Dev mode');
+    //
     res.send('In dev mode...');
   })
 }
@@ -33,7 +33,7 @@ if(!isDevMode) {
 const games = require('./data/games');
 
 // constants
-const PORT = process.env.PORT || 5555;
+const PORT = process.env.PORT || 5556;
 const DB_URI = process.env.ATLAS_URI;
 
 // database
@@ -42,7 +42,7 @@ const DB_URI = process.env.ATLAS_URI;
 
 // const connection = mongoose.connection;
 // connection.once('open', () => {
-//   console.log('MongoDB database connection established successfully.');
+//   //
 // })
 
 
@@ -68,5 +68,5 @@ io.on('connection', client => {
 
 // server
 http.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}...`)
+  console.log(`Listening on port ${PORT}...`);
 })
