@@ -1,7 +1,7 @@
 /** All time variables in milliseconds **/
 
 /** Switch between dev mode and production **/
-const isDevMode = true;
+const isDevMode = false;
 
 const MAX_PLAYERS_PER_LOBBY = 4;
 const MAX_LOBBIES = 50;
@@ -10,7 +10,7 @@ const MAX_LOBBIES = 50;
 const VIEW_TIME = isDevMode ? 1000 : 15000;
 //=== Change the 1st number for dev mode ===// 
 /** length of time in DrawGameView **/
-const ROUND_TIME = isDevMode ? 1000 : 90000; 
+const ROUND_TIME = isDevMode ? 1000 : 120000; 
 
 /** the length of time we wait before sending the final coordinates out in the event that a player disconnects during the game **/
 const DELAY_FOR_COORDS = 1500;
