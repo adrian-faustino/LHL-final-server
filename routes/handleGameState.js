@@ -27,12 +27,10 @@ module.exports = function(games, client, db, io) {
   })
 
 
-  client.on('startGame', data => {
+  client.on('startGame', async data => {
     const { lobbyID, nextView } = data;
-    io.in(lobbyID).emit('changeView', nextView);
 
-    let opacity = 1;
-    let interval;
+    io.in(lobbyID).emit('changeView', nextView);
 
     /** Timeout for InstructionsView **/
     setTimeout(() => {

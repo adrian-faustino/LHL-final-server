@@ -7,10 +7,10 @@ const MAX_PLAYERS_PER_LOBBY = 4;
 const MAX_LOBBIES = 50;
 
 /** length of time in InstructionsView **/
-const VIEW_TIME = 12000;
-
+const VIEW_TIME = isDevMode ? 1000 : 15000;
+//=== Change the 1st number for dev mode ===// 
 /** length of time in DrawGameView **/
-const ROUND_TIME = 90000; 
+const ROUND_TIME = isDevMode ? 1000 : 90000; 
 
 /** the length of time we wait before sending the final coordinates out in the event that a player disconnects during the game **/
 const DELAY_FOR_COORDS = 1500;
@@ -23,6 +23,7 @@ const LOBBY_DECAY = VIEW_TIME + ROUND_TIME + DELAY_FOR_COORDS + 2000;
 
 
 const constants = {
+  isDevMode,
   MAX_PLAYERS_PER_LOBBY,
   MAX_LOBBIES,
   VIEW_TIME,

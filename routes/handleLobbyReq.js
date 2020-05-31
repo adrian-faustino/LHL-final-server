@@ -1,7 +1,7 @@
 const constants = require('../constants');
 const util = require('../helpers/util');
 const { MAX_PLAYERS_PER_LOBBY, DELAY_FOR_COORDS, LOBBY_DECAY, MAX_LOBBIES } = constants;
-const { generateUniquePID, generateQuadrant } = util;
+const { generateUniquePID, generateQuadrant, getIMG, randomNumAllInclusive } = util;
 
 
 
@@ -173,6 +173,18 @@ module.exports = function(games, client, db, io, app) {
       //
       res.status(500).send({err: 'Something went wrong.'});
     }
+  })
+
+
+  app.post('/getIMG', async (req, res) => {
+    const { lobbyID } = req.body;
+
+    // Make a request to pixabay for an array of images and respond with 1 random image
+    const imagesArr = await getIMG();
+    const gameIMG = imagesArr[randomNumAllInclusive(0, imagesArr.length)];
+
+    io.in(lobbyID).emit('gameIMG', gameIMG);
+    res.status(200).send('OK');
   })
 
 };

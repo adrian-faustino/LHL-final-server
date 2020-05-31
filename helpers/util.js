@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 function randomNumAllInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -44,11 +46,29 @@ function generateQuadrant(coordinatesObj) {
   return myQuadrant;
 }
 
+async function getIMG() {
+  // constants
+  const API_KEY = '16805778-e9c04da706ff9dae9c860dad1';
+  const API_BASE_QUERY = `https://pixabay.com/api/?key=${API_KEY}`;
+  const QUERY = API_BASE_QUERY + '&image_type=photo&orientation=vertical&per_page=200';
+  
+  let imagesArr;
+
+  await axios.get(QUERY).then(response => {
+    // console.log(response.data.hits)
+    imagesArr = response.data.hits})
+  .catch(err => console.log(err));
+
+
+  return imagesArr;
+}
+
 const util = {
   randomNumAllInclusive,
   generatePlayerID,
   generateUniquePID,
-  generateQuadrant
+  generateQuadrant,
+  getIMG
 }
 
 module.exports = util;
